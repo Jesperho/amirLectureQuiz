@@ -1,0 +1,119 @@
+Module4_1
+"""
+number = 1
+
+while number <= 1000:
+    if number % 3 == 0:
+        print(number)
+
+
+    number += 1
+"""
+Module4_2
+"""
+#Write a program that converts inches to centimeters until the user inputs a negative value. Then the program ends.
+while True:
+    inch = float(input("Enter the number of inches you want to convert to cm:"))
+    if inch < 0:
+        print("Exiting program.")
+        break
+
+
+    centimeters = inch * 2.54
+    print(f"{inch} equals to: {centimeters} centimeters")
+"""
+Module4_3
+"""
+#Write a program that asks the user to enter numbers until they enter an empty string to quit.
+#Finally, the program prints out the smallest and largest number from the numbers it received.
+
+numbers = []
+
+while True:
+    user_input = input("Enter a number (or press Enter to quit): ")
+
+    if user_input == "":
+        break
+
+    try:
+         number = float(user_input)
+         numbers.append(number)
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+
+if numbers:
+
+    smallest = min(numbers)
+    largest = max(numbers)
+    print(f"The smallest number is: {smallest}")
+    print(f"The largest number is: {largest}")
+else:
+    print("No numbers were entered.")
+"""
+Module4_4
+"""
+#Write a game where the computer draws a random integer between 1 and 10. The user tries to guess the number until they guess the right number.
+#After each guess the program prints out a text: Too high, Too low or Correct. Notice that the computer must not change the number between guesses.
+
+import random
+
+number = random.randint(1,10)
+
+while True:
+    try:
+
+        number_guess = int(input("Choose a number between 1-10:"))
+
+        if number_guess == number:
+            print("You guessed the correct number!")
+            break
+        elif number_guess < number:
+            print("Number guessed is too low. Try again.")
+        else:
+            print("Number guessed is too high. Try again.")
+
+    except ValueError:
+        print("Invalid input. Enter a valid number between 1-10.")
+"""
+Module4_5
+"""
+username = 'python'
+password = 'rules'
+
+attempts = 0
+
+
+while attempts < 5:
+    username_input = input("Username:").lower()
+    if username_input == username:
+        a=input("password?")
+        if a == password:
+            print("welcome!")
+            break
+        else:
+            print("That is the wrong password.")
+    else:
+        print("That is the wrong username")
+        attempts += 1
+
+if attempts == 5:
+    print("Access denied.")
+"""
+Module4_6
+"""
+import random
+
+number = int(input("Enter number of points: "))
+n = 0
+
+for _ in range(number):
+    x = random.uniform(-1,1)
+    y = random.uniform(-1,1)
+
+    points_inside = x**2 + y**2
+    if points_inside < 1:
+        n += 1
+print("Total points inside of the circle: ", n)
+pi_number = (4*n)/number
+print(pi_number)
+"""
