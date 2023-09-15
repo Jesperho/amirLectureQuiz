@@ -1,0 +1,106 @@
+1.
+
+#Write a program that asks the user how many dice to roll.
+# The program rolls all the dice once and prints out the sum of the numbers. Use a for loop.
+
+import random
+def dice():
+    return random.randint(1, 6)
+
+num_dice = int(input("How many dice would you like to roll? "))
+
+total = 0
+
+for _ in range(num_dice):
+    result = dice()
+    total += result
+    print(f"Rolled a {result} on one dice.")
+print(f"Total sum of {num_dice} dice rolls: {total}")
+
+
+
+
+2.
+
+#Write a program that asks the user to enter numbers until they input an empty string to quit.
+# At the end, the program prints out the five greatest numbers sorted in descending order.
+# Hint: You can reverse the order of sorted list items by using the sort method with the reverse=True argument.
+
+
+numbers = []
+while True:
+    user_input = input("Enter a number (or press Enter to quit): ")
+    if user_input == "":
+        break
+    try:
+        number = int(user_input)
+        numbers.append(number)
+    except ValueError:
+        print("Please enter a valid number.")
+
+if len(numbers) >= 5:
+
+    numbers.sort(reverse=True)
+    print("The five greatest numbers sorted in descending order:")
+    for i in range(5):
+        print(numbers[i])
+else:
+    print("Please enter at least 5 numbers to find the five of the greatest numbers")
+
+
+
+
+3.
+
+#Write a program that asks the user for an integer and tells if the number is a prime number.
+# Prime numbers are number that are only divisible by one or the number itself.
+
+#For example, 13 is a prime number as it can only be divided by 1 or 13 so that the result is an integer.
+#On the other hand, 21 is not a prime number as it is divisible by 3 and 7.
+
+
+def prime(number):
+    if number <= 1:
+        return False
+    elif number <= 3:
+        return True
+    elif number % 2 == 0 or number % 3 == 0:
+        return False
+
+    i = 5
+    while i * i <= number:
+        if number % i == 0 or number % (i + 2) == 0:
+            return False
+        i += 6
+
+    return True
+
+
+try:
+    user_input = int(input("Enter an integer: "))
+    if prime(user_input):
+        print(f"{user_input} is a prime number.")
+    else:
+        print(f"{user_input} is not a prime number.")
+except ValueError:
+    print("Invalid input. Please enter a valid integer.")
+
+
+
+4.
+
+
+#Write a program that asks the user to enter the names of five cities one by on
+# (use a for loop for reading the names) and stores them into a list structure.
+# Finally, the program prints out the names of the cities one by one, one city per line, in the same order they
+# were read as input. Use a for loop for asking the names and a for/in loop to iterate through the list.
+
+
+cities = []
+for i in range(5):
+    city_name = input(f"Enter the name of city {i + 1}: ")
+    cities.append(city_name)
+
+print("Cities entered:")
+for city in cities:
+    print(city)
