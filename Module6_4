@@ -1,0 +1,15 @@
+#Write a function that gets a list of integers as a parameter.
+# The function returns the sum of all the numbers in the list.
+# For testing, write a main program where you create a list, call the function, and print out the value it returned.
+
+def calculation(number):
+    total = sum(number)
+    return total
+
+if __name__ == "__main__":
+
+    number = [5, 10, 15, 20, 25, 30]
+
+    result = calculation(number)
+
+print(f"The sum of the numbers is: {result}.")
