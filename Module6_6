@@ -1,0 +1,37 @@
+#Write a function that receives two parameters:
+# the diameter of a round pizza in centimeters and the price of the pizza in euros.
+# The function calculates and returns the unit price of the pizza per square meter.
+# The main program asks the user to enter the diameter and price of two pizzas and tells the user which pizza provides
+# better value for money (which of them has a lower unit price).
+# You must use the function you wrote for calculating the unit prices.
+
+import math
+
+def unit_calculate(diameter_cm, price_euro):
+    radius_cm = diameter_cm / 2
+    areacm2 = math.pi * (radius_cm ** 2)
+    aream2 = areacm2 / 10000
+
+    unit_price_m2 = price_euro / aream2
+    return unit_price_m2
+
+if __name__ == "__main__":
+
+    diameter1 = float(input("Enter the diameter of the first pizza: "))
+    price1 = float(input("Enter the price of the first pizza: "))
+
+    diameter2 = float(input("Enter the diameter of the second pizza: "))
+    price2 = float(input("Enter the price of the second pizza: "))
+
+    unit_1_price = unit_calculate(diameter1, price1)
+    unit_2_price = unit_calculate(diameter2, price2)
+
+    if unit_1_price < unit_2_price:
+        print("The first pizza has a better value for money.")
+    elif unit_1_price > unit_2_price:
+        print("The second pizza has a better value for money.")
+    else:
+        print("Both pizzas have the same value for the money")
+
+
+
