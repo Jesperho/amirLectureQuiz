@@ -1,0 +1,30 @@
+# Create an empty dictionary to store airport data
+airport_data = {}
+
+while True:
+    print("\nOptions:")
+    print("1. Enter a new airport")
+    print("2. Fetch airport information")
+    print("3. Quit")
+
+    choice = input("Enter your choice (1/2/3): ")
+
+    if choice == "1":
+        icao_code = input("Enter the ICAO code of the airport: ").strip().upper()
+        airport_name = input("Enter the name of the airport: ")
+        airport_data[icao_code] = airport_name
+        print(f"Airport data for {icao_code} added successfully.")
+
+    elif choice == "2":
+        icao_code = input("Enter the ICAO code of the airport to fetch: ").strip().upper()
+        if icao_code in airport_data:
+            print(f"The name of the airport with ICAO code {icao_code} is: {airport_data[icao_code]}")
+        else:
+            print(f"No information found for ICAO code {icao_code}")
+
+    elif choice == "3":
+        print("Exiting the program.")
+        break
+
+    else:
+        print("Invalid choice. Please choose 1, 2, or 3.")
