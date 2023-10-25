@@ -1,0 +1,40 @@
+
+class Car:
+    def __init__(self, reg_num, max_speed):
+        self.reg_num = reg_num
+        self.max_speed = max_speed
+        self.current_speed = 0
+        self.travelled_distance = 0
+
+    def accelerate(self, change):
+        new_speed = self.current_speed + change
+        self.current_speed = max(0, min(new_speed, self.max_speed))
+
+
+def main():
+    new_car = Car("ABC-123", 142)
+
+
+    print(f"Registration Number: {new_car.reg_num}")
+    print(f"Maximum Speed: {new_car.max_speed} km/h")
+    print(f"Current Speed: {new_car.current_speed} km/h")
+    print(f"Travelled Distance: {new_car.travelled_distance} km")
+
+
+    new_car.accelerate(30)
+    print(f"The current speed is: {new_car.current_speed} kmh")
+    new_car.accelerate(70)
+    print(f"The current speed is: {new_car.current_speed} kmh")
+    new_car.accelerate(50)
+    print(f"The current speed is: {new_car.current_speed} kmh")
+
+    new_car.accelerate(-200)
+
+    print(f"The final speed is: {new_car.current_speed}")
+
+
+if __name__ == "__main__":
+    main()
+
+
+
