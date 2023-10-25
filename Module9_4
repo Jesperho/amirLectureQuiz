@@ -1,0 +1,51 @@
+import random
+
+class Car:
+    def __init__(self, reg_num, max_speed):
+        self.reg_num = reg_num
+        self.max_speed = max_speed
+        self.current_speed = 0
+        self.travelled_distance = 0
+
+    def accelerate(self, change):
+        new_speed = self.current_speed + change
+        self.current_speed = max(0, min(new_speed, self.max_speed))
+
+    def drive(self, hours):
+        self.travelled_distance += self.current_speed * hours
+
+def main():
+    car_list = []
+
+
+    for i in range(1, 11):
+        registration_number = f"ABC-{i}"
+        maximum_speed = random.randint(100, 200)
+        car = Car(registration_number, maximum_speed)
+        car_list.append(car)
+
+    race_finished = False
+    hours = 0
+
+    while not race_finished:
+        hours += 1
+
+
+        for car in car_list:
+            car.accelerate(random.randint(-10, 15))
+            car.drive(1)
+
+
+            if car.travelled_distance >= 10000:
+                race_finished = True
+                break
+
+
+    print("Car Race Results:")
+    print("{:<12} {:<15} {:<15} {:<15}".format("Reg. Number", "Max Speed (km/h)", "Current Speed", "Distance (km)"))
+    for car in car_list:
+        print("{:<12} {:<15} {:<15} {:<15}".format(car.reg_num, car.max_speed, car.current_speed, car.travelled_distance))
+    print(f"Race finished in {hours} hours")
+
+if __name__ == "__main__":
+    main()
