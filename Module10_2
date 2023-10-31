@@ -1,0 +1,46 @@
+class Elevator:
+    def __init__(self, bottom, top):
+        self.current_floor = bottom
+        self.bottom_floor = bottom
+        self.top_floor = top
+
+    def go_to_floor(self, target_floor):
+        if target_floor > self.current_floor:
+            self.floor_up(target_floor)
+        elif target_floor < self.current_floor:
+            self.floor_down(target_floor)
+
+    def floor_up(self, target_floor):
+        while self.current_floor < target_floor and self.current_floor < self.top_floor:
+            self.current_floor += 1
+            print(f"Elevator is now on floor {self.current_floor}")
+
+    def floor_down(self, target_floor):
+        while self.current_floor > target_floor and self.current_floor > self.bottom_floor:
+            self.current_floor -= 1
+            print(f"Elevator is now on floor {self.current_floor}")
+
+
+class Building:
+    def __init__(self, bottom, top, num_elevators):
+        self.bottom_floor = bottom
+        self.top_floor = top
+        self.elevators = [Elevator(bottom, top) for _ in range(num_elevators)]
+
+    def run_elevator(self, elevator_number, destination_floor):
+        if elevator_number < len(self.elevators):
+            elevator = self.elevators[elevator_number]
+            print(f"Running elevator {elevator_number} to floor {destination_floor}")
+            elevator.go_to_floor(destination_floor)
+        else:
+            print(f"Elevator {elevator_number} does not exist in this building.")
+
+
+
+building = Building(1, 10, 3)
+
+
+building.run_elevator(0, 5)
+building.run_elevator(1, 8)
+building.run_elevator(2, 2)
+building.run_elevator(3, 7)
