@@ -1,3 +1,11 @@
+#Extend the program by adding an accelerate method into the new class. The method should receive the change of speed (km/h) as a parameter. 
+# If the change is negative, the car reduces speed. The method must change the value of the speed property of the object. 
+# The speed of the car must stay below the set maximum and cannot be less than zero. Extend the main program so that the speed of the car
+# is first increased by +30 km/h, then +70 km/h and finally +50 km/h. Then print out the current speed of the car. Finally,
+# use the emergency brake by forcing a -200 km/h change on the speed and then print out the final speed. The travelled distance does not 
+# have to be updated yet.
+
+
 
 class Car:
     def __init__(self, reg_num, max_speed):
@@ -11,30 +19,24 @@ class Car:
         self.current_speed = max(0, min(new_speed, self.max_speed))
 
 
-def main():
-    new_car = Car("ABC-123", 142)
+
+new_car = Car("ABC-123", 142)
 
 
-    print(f"Registration Number: {new_car.reg_num}")
-    print(f"Maximum Speed: {new_car.max_speed} km/h")
-    print(f"Current Speed: {new_car.current_speed} km/h")
-    print(f"Travelled Distance: {new_car.travelled_distance} km")
+print(f"Registration Number: {new_car.reg_num}")
+print(f"Maximum Speed: {new_car.max_speed} km/h")
+print(f"Current Speed: {new_car.current_speed} km/h")
+print(f"Travelled Distance: {new_car.travelled_distance} km")
 
 
-    new_car.accelerate(30)
-    print(f"The current speed is: {new_car.current_speed} kmh")
-    new_car.accelerate(70)
-    print(f"The current speed is: {new_car.current_speed} kmh")
-    new_car.accelerate(50)
-    print(f"The current speed is: {new_car.current_speed} kmh")
+new_car.accelerate(30)
+print(f"The current speed is: {new_car.current_speed} kmh")
+new_car.accelerate(70)
+print(f"The current speed is: {new_car.current_speed} kmh")
+new_car.accelerate(50)
+print(f"The current speed is: {new_car.current_speed} kmh")
 
-    new_car.accelerate(-200)
+new_car.accelerate(-200)
 
-    print(f"The final speed is: {new_car.current_speed}")
-
-
-if __name__ == "__main__":
-    main()
-
-
+print(f"The final speed is: {new_car.current_speed}")
 
