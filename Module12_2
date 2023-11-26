@@ -1,0 +1,23 @@
+import requests
+
+def get_weather(city_name, api_key):
+    base_url = f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}"
+    response = requests.get(base_url)
+    data = response.json()
+    
+    if data["cod"] != "404":
+        main = data['main']
+        temperature_kelvin = main['temp']
+        temperature_celsius = temperature_kelvin - 273.15
+        weather = data['weather'][0]['description']
+        print(f"Weather in {city_name}: {weather}, temperature: {temperature_celsius:.2f} degrees Celsius")
+    else:
+        print("Invalid city: please check your city name")
+
+def main():
+    api_key = "d9c98ac7fe8cae1493c8110bc1684d01"
+    city_name = input("Enter the name of a city: ")
+    get_weather(city_name, api_key)
+
+if __name__=="__main__":
+    main()
