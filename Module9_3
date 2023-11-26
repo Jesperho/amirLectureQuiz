@@ -1,4 +1,3 @@
-
 class Car:
     def __init__(self, reg_num, max_speed):
         self.reg_num = reg_num
@@ -14,33 +13,11 @@ class Car:
         self.travelled_distance += self.current_speed * hours
 
 
-def main():
-    new_car = Car("ABC-123", 142)
+new_car = Car("ABC-123", 142)
 
-
-    print(f"Registration Number: {new_car.reg_num}")
-    print(f"Maximum Speed: {new_car.max_speed} km/h")
-    print(f"Current Speed: {new_car.current_speed} km/h")
-    print(f"Travelled Distance: {new_car.travelled_distance} km")
-
-
-    new_car.accelerate(30)
-    print(f"The current speed is: {new_car.current_speed} kmh")
-    new_car.accelerate(70)
-    print(f"The current speed is: {new_car.current_speed} kmh")
-    new_car.accelerate(50)
-    print(f"The current speed is: {new_car.current_speed} kmh")
-
-    new_car.accelerate(-200)
-
-    print(f"The final speed is: {new_car.current_speed}")
-
-    new_car.drive(1.5)
-    print(f"The car has travelled: {new_car.travelled_distance} km")
-
-
-if __name__ == "__main__":
-    main()
-
+new_car.accelerate(30)
+new_car.drive(1.5)
+print(f"Current Speed: {new_car.current_speed} km/h")
+print(f"The car has travelled: {new_car.travelled_distance} km")
 
 
