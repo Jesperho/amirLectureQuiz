@@ -1,0 +1,61 @@
+#Extend the previosly written Car class by adding two subclasses: ElectricCar and GasolineCar.
+# Electric cars have the capacity of the battery in kilowatt-hours as their property.
+# Gasoline cars have the volume of the tank in liters as their property.
+# Write initializers for the subclasses. For example, the initializer of electric cars receives the registration
+# number, maximum speed and battery capacity as its parameter. It calls the initializer of the base class to set the
+# first two properties and then sets its capacity. Write a main program where you create one electric car (ABC-15, 180 km/h, 52.5 kWh)
+# and one gasoline car (ACD-123, 165 km/h, 32.3 l). Select speeds for both cars, make them drive for three hours and print out the values of
+# their kilometer counters.
+
+import random
+
+class Car:
+    def __init__(self, name, speed, reliability):
+        self.name = name
+        self.speed = speed
+        self.reliability = reliability
+        self.distance = 0
+
+    def drive(self):
+        if random.random() < self.reliability:
+            self.distance += self.speed
+
+    def __str__(self):
+        return f"{self.name:<15} | Speed: {self.speed} km/h | Distance: {self.distance} km"
+
+
+class ElectricCar(Car):
+    def __init__(self, registration_number, max_speed, battery_capacity):
+        super().__init__(name=registration_number, speed=max_speed, reliability=random.uniform(0.7, 0.9))
+        self.battery_capacity = battery_capacity
+
+    def __str__(self):
+        return super().__str__() + f" | Battery Capacity: {self.battery_capacity} kWh"
+
+
+class GasolineCar(Car):
+    def __init__(self, registration_number, max_speed, tank_capacity):
+        super().__init__(name=registration_number, speed=max_speed, reliability=random.uniform(0.7, 0.9))
+        self.tank_capacity = tank_capacity
+
+    def __str__(self):
+        return super().__str__() + f" | Tank Capacity: {self.tank_capacity} Liters"
+
+
+if __name__ == "__main__":
+    electric_car = ElectricCar(registration_number="ABC-15", max_speed=180, battery_capacity=52.5)
+    gasoline_car = GasolineCar(registration_number="ACD-123", max_speed=165, tank_capacity=32.3)
+
+    hours = 3
+    for _ in range(hours):
+        electric_car.drive()
+        gasoline_car.drive()
+
+    print("Electric Car Status:")
+    print(electric_car)
+
+    print("\nGasoline Car Status:")
+    print(gasoline_car)
+
+
+
